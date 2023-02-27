@@ -24,9 +24,9 @@ public class SpawnExample : MonoBehaviour
     {
         float chance = Random.Range(0, 100);
 
-        if (chance < 20)
+        if (chance < 70)
         {
-            _factory.CreateNlo(new Nlo(_init.Ship, GetRandomPositionOutsideScreen(), Config.NloSpeed));
+            _factory.CreateNlo(new Nlo(GetRandomPositionOutsideScreen(), Config.NloSpeed, Random.Range(0, 2)));
         }
         else
         {
@@ -39,7 +39,7 @@ public class SpawnExample : MonoBehaviour
 
     private Vector2 GetRandomPositionOutsideScreen()
     {
-        return Random.insideUnitCircle.normalized + new Vector2(0.5F, 0.5F);
+        return Random.insideUnitCircle.normalized;
     }
 
     private static Vector2 GetDirectionThroughtScreen(Vector2 postion)
