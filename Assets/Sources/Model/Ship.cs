@@ -7,10 +7,13 @@ namespace Asteroids.Model
     {
         public Ship(Vector2 position, float rotation) : base(position, rotation) { }
 
+        private uint _lives = 3;
         private readonly float _unitsPerSecond = 0.001f;
         private readonly float _maxSpeed = 0.0015f;
         private readonly float _secondsToStop = 1f;
         private readonly float _degreesPerSecond = 180;
+        
+        public bool Alive => _lives > 0;
 
         public Vector2 Acceleration { get; private set; }
 
@@ -49,5 +52,7 @@ namespace Asteroids.Model
 
             MoveTo(nextPosition);
         }
+
+        public void TakeHit() => _lives = _lives > 0 ? _lives - 1 : 0;
     }
 }
